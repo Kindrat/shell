@@ -17,7 +17,7 @@ function database_is_operational() {
   local user=$1
   local password=$2
   local host=$3
-  mysqladmin ping-u${user} -p ${password} -h ${host} --silent
+  mysqladmin ping -u${user} -p ${password} -h ${host} --silent
 }
 
 function wait_for_database() {
