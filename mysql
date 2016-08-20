@@ -1,3 +1,4 @@
+# @IgnoreInspection BashAddShebang
 # Written by Legioner <legioner.alexei@gmail.com>
 # Created : 2016.08.20
 # Last updated : 2016.08.20
@@ -13,19 +14,19 @@
 #   $3 - database host
 # Returns : true if database is reachable
 function database_is_operational() {
-  local user = $1
-  local password = $2
-  local host = $3
+  local user=$1
+  local password=$2
+  local host=$3
   mysqladmin ping-u${user} -p ${password} -h ${host} --silent
 }
 
 function wait_for_database() {
-  local user = $1
-  local password = $2
-  local host = $3
-  local retries = 10
+  local user=$1
+  local password=$2
+  local host=$3
+  local retries=10
   while ! $(database_is_operational ${user} ${password} ${host}); do
-    [[ $i -eq 0 ]] && {
+    [[ ${i} -eq 0 ]] && {
       exit 1
     }
     let i=i-1

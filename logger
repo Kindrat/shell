@@ -1,0 +1,47 @@
+function log() {
+    echo -e "`date`\t$@"
+}
+
+# Set Colors
+bold=$(tput bold)
+underline=$(tput sgr 0 1)
+reset=$(tput sgr0)
+
+purple=$(tput setaf 171)
+red=$(tput setaf 1)
+green=$(tput setaf 76)
+tan=$(tput setaf 3)
+blue=$(tput setaf 38)
+
+# Headers and  Logging
+function print_header() {
+    printf "\n${bold}${purple}==========  %s  ==========${reset}\n" "$@"
+}
+
+function arrow() {
+    printf "➜ $@\n"
+}
+
+function success() {
+    printf "${green}✔ %s${reset}\n" "$@"
+}
+
+function error() {
+    printf "${red}✖ %s${reset}\n" "$@"
+}
+
+function warning() {
+    printf "${tan}➜ %s${reset}\n" "$@"
+}
+
+function underline() {
+    printf "${underline}${bold}%s${reset}\n" "$@"
+}
+
+function bold() {
+    printf "${bold}%s${reset}\n" "$@"
+}
+
+function note() {
+    printf "${underline}${bold}${blue}Note:${reset}  ${blue}%s${reset}\n" "$@"
+}
